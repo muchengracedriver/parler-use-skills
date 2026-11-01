@@ -11,9 +11,46 @@ Skill会查询该用户本人的账户，解释时间窗口、金额/Token单位
 
 ## 安装到 Codex
 
-需要 Python 3.10+ 和 Codex 的内置 `skill-installer`。仓库当前为私有，下载者需要仓库访问权限；公开分发前应由仓库所有者决定可见性。
+需要 Python 3.10+。安装生图附加 skill 还需要 Codex 的内置 `skill-installer`。
 
-有Git访问权限时：
+### 通过 npm 安装（推荐）
+
+需要 Node.js 18+ 和 npm。无需克隆 GitHub 仓库，在自己的终端运行：
+
+```bash
+npx parler-use-skills@latest install
+npx parler-use-skills@latest configure
+```
+
+第一条命令安装 skill、生图附加 skill 和本地 MCP；第二条交互式录入本人凭据。下一轮 Codex 对话即可用自然语言查询。首次 `npx` 提示下载时确认包名为 `parler-use-skills`。
+
+也可以全局安装，之后直接使用命令：
+
+```bash
+npm install -g parler-use-skills
+parler-use-skills install
+parler-use-skills configure
+```
+
+`npm install -g` 本身只安装命令行工具；运行 `parler-use-skills install` 才会配置 Codex。包没有自动执行的安装钩子。
+
+常用命令：
+
+```bash
+npx parler-use-skills@latest usage 7d
+npx parler-use-skills@latest usage 5h
+npx parler-use-skills@latest usage accountStatus --error-page-size 20
+npx parler-use-skills@latest usage membership
+npx parler-use-skills@latest usage payments
+npx parler-use-skills@latest models
+npx parler-use-skills@latest image-config
+```
+
+`PARLER_PYTHON` 可指定 Python 可执行文件路径。全部安装参数仍可使用，例如 `npx parler-use-skills@latest install --dest /path/to/skills --skip-image --skip-mcp`。
+
+### 从 GitHub 源码安装
+
+仓库为私有时需要 GitHub 访问权限；npm 安装不需要访问源码仓库。有Git访问权限时：
 
 ```bash
 git clone https://github.com/muchengracedriver/parler-use-skills.git
@@ -86,7 +123,9 @@ python3 skills/parler-use/scripts/parler.py usage membership
 ## 开发验证
 
 ```bash
+npm test
 python3 -m unittest discover -s tests -v
+npm pack --dry-run
 ```
 
 测试使用本地模拟数据和临时目录，不登录真实账户、不修改开发者的Codex配置、不生成图片。接口和客户端格式依据2026-10-31的服务实现与官方文档，版本变化时请重新核对。

@@ -1,0 +1,45 @@
+{
+  "name": "parler-use-skills",
+  "version": "1.0.0",
+  "description": "Configure AI harnesses for ParlerTech and query personal usage, membership and account errors through a portable skill and local MCP.",
+  "type": "module",
+  "bin": {
+    "parler-use-skills": "bin/parler-use-skills.mjs"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "install.py"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test tests/npm-cli.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muchengracedriver/parler-use-skills.git"
+  },
+  "homepage": "https://github.com/muchengracedriver/parler-use-skills#readme",
+  "bugs": {
+    "url": "https://github.com/muchengracedriver/parler-use-skills/issues"
+  },
+  "author": {
+    "name": "Mucheng",
+    "url": "https://github.com/muchengracedriver"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "parlertech",
+    "codex",
+    "skills",
+    "mcp",
+    "ai-harness",
+    "usage"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
